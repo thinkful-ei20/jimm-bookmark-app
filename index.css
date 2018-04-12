@@ -1,26 +1,62 @@
 *{
   margin-top: 0;
   padding-top: 0;
+  line-height: 1.5;
   box-sizing: border-box;
 }
 
 
 header{
+  display: block;
   width: 100%;
-  background-color: rgb(243, 238, 230);
+  margin: 0;
+  padding: 0.1em 16px;
+  background-color: rgb(241, 235, 227);
   font-family: Arial, Helvetica, sans-serif;
-  padding-top: 25px;
 }
 
 main{
-  width: 100%;
+  max-width: 500px;
+  margin: 30px auto;
 }
 
 h1{
-  margin: 0 0 0 40px;
+  margin: 10px 5%;
+  font-size: 36px;
+  display: block;
 }
 
-ul, li{
-  margin-left: auto;
-  margin-right: auto;
+li{
+  border: 1px solid gray;
+  border-radius: 10px;
+  list-style: none;
+  margin: 10px 0;
+  padding: 20px;
+  background-color: rgb(241, 235, 227);;;
 }
+
+ul{
+  margin: 25px auto;
+  padding: 0;
+}
+
+.main-controls{
+  margin: auto;
+}
+
+.bookmark-controls{
+  display: inline;
+  margin-left: auto;
+}
+
+.unexpanded-bookmark-contents{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.unexpanded-bookmark-contents span{
+  display: table-cell;
+  text-align: center;
+}
+
