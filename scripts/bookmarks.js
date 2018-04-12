@@ -36,7 +36,7 @@ const bookmarks = (function(){
       liString += `
       <div class="expanded-bookmark-contents">
         <span>${element.description}</span>
-        <span class="link"><a href="${element.url}">Link</a></span>
+        <span class="link"><a href="${element.url}" target="_blank">Link</a></span>
       </div>`;
     }
 

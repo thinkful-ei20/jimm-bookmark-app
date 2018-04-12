@@ -10,6 +10,12 @@ const store = (function(){
 
   let expandedIds = ['cjfwxxod8002m0kz5kv4p1k4d'];
 
+  let error = null;
+
+  function setError(e){
+    this.error = e;
+  }
+
   const addItem = function(item) {
     this.items.push(item);
   };
@@ -38,6 +44,8 @@ const store = (function(){
     expandedIds,
     findById,
     findAndDelete,
-    findAndUpdate
+    findAndUpdate,
+    error,
+    setError,
   };
 }());
