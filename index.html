@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Bookmarks</title>
     <link rel="shortcut icon" href="https://www.materialui.co/materialIcons/action/bookmark_black_192x192.png">
-    <!--link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css"-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <link rel="stylesheet" href="index.css" type="text/css">
   </head>
@@ -20,35 +19,46 @@
         <button>Add Bookmark</button>
       </div>
       
-      <ul>
-        <li>
+      <ul class="js-bookmarks-list">
+        <!--li>
           <div class="unexpanded-bookmark-contents">
-            <span>Bookmark 1</span>
+            <span class="bookmark-title">Bookmark 1</span>
             <span>Rating: 4/5</span>
-            <span>  
-              <div class="bookmark-controls">
-                <button class="show-more-button">
-                  <span class="button-label">show more</span>
-                </button>
-              </div>
+            <span class="bookmark-control">  
+              <button class="show-more-button">
+                <span class="button-label">show less</span>
+              </button>
             </span>  
+          </div>
+          <div class="expanded-bookmark-contents">
+            <span>Discription</span>
+            <span class="link"><a href="">Link</a></span>
           </div>
         </li>
 
         <li>
-          Bookmark 2
-          <div></div>
-        </li>
+          <div class="unexpanded-bookmark-contents" id="hide-this-bottom-border">
+            <span class="bookmark-title">Bookmark 2</span>
+            <span>Rating: 3/5</span>
+            <span class="bookmark-control">  
+              <button class="show-more-button">
+                <span class="button-label">show more</span>
+              </button>
+            </span>  
+          </div>
+          <div id="hide-this" class="expanded-bookmark-contents">
+            <span>discription</span>
+          </div>
+        </li-->
 
-        <li>
-          Bookmark 3
-          <div></div>
-        </li>
       </ul>
     </main>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/store.js"></script>
+    <script type="text/javascript" src="scripts/bookmarks.js"></script>
     <script type="text/javascript" src="scripts/index.js"></script>
+    
   </body>
 </html>
