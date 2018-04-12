@@ -12,16 +12,30 @@ const store = (function(){
 
   let error = null;
 
+  let minRating = 0;
+
   function setError(e){
     this.error = e;
   }
 
-  const addItem = function(item) {
-    this.items.push(item);
+  const isIdExpaneded = function(id){
+    if(this.expandedIds.find(idInArr => {if(idInArr === id){return true;}})){
+      return true;
+    } else {
+      return false;
+    }  
+  };
+
+  const removeFromExpanded = function(id){
+    this.expandedIds = this.expandedIds.filter(expandedId => expandedId !== id);
   };
 
   const findById = function(id) {
     return this.items.find(item => item.id === id);
+  };
+
+  const addItem = function(item) {
+    this.items.push(item);
   };
 
   const findAndDelete = function(id) {
@@ -36,6 +50,10 @@ const store = (function(){
     Object.assign(found,newData);
   };
 
+  const setFilterMinimumRating = function(rating){
+    this.minRating = rating;
+  };
+
 
 
   return{
@@ -47,5 +65,8 @@ const store = (function(){
     findAndUpdate,
     error,
     setError,
+    setFilterMinimumRating,
+    isIdExpaneded,
+    removeFromExpanded,
   };
 }());

@@ -7,7 +7,7 @@ const bookmarks = (function(){
   function render(){
     let listItems = '';
     for(let i = 0; i < store.items.length; i++){
-      listItems += `<li>${generateHtmlLi(store.items[i])}</li>`;
+      listItems += `<li class="js-bookmark-element" data-id="${store.items[i].id}">${generateHtmlLi(store.items[i])}</li>`;
     }
 
     $('.js-bookmarks-list').html(listItems);
@@ -43,8 +43,30 @@ const bookmarks = (function(){
     return liString;
   }
 
+  function getIdFromElement(element){
+    return $(element).closest('.js-bookmark-element').data('id');
+  }
+
+  function handleShowMoreClicked(){
+    $('.js-bookmarks-list').on('click', '.show-more-button', event =>{
+      const id = getIdFromElement(event.currentTarget);
+      if(store.isIdExpaneded(id)){
+        store.removeFromExpanded(id);
+      } else {
+        store.expandedIds.push(id);
+      }
+      store.setError(null);
+      render();
+    });
+  }
+
+  function bindEventListeners(){
+    handleShowMoreClicked();
+  }
+
   return{
     render,
+    bindEventListeners,
   };
 }());
 
