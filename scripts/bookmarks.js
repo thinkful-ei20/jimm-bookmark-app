@@ -46,7 +46,9 @@ const bookmarks = (function(){
       }
     }
     $('.js-main-controls').html(controls);
+    $('.js-min-rating-selector').val(store.minRating);
     $('.js-bookmarks-list').html(listItems);
+
   }
 
   function generateHtmlLi(element){
