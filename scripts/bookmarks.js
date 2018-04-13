@@ -18,7 +18,7 @@ const bookmarks = (function(){
     let errorHtml = '';
     if(store.error !== null){
       errorHtml += `
-        <p>A new bookmark must contain a title and a url.</p>
+        <p>A new bookmark must contain a title and a url and rating cannot be outside of 1 to 5.</p>
       `;
       store.setError(null);
     }
@@ -46,7 +46,7 @@ const bookmarks = (function(){
           </label>
         </div>
         <div>
-          <label for="bookmark-description-entry">Description
+          <label for="bookmark-description-entry">Description<br>
           <textarea name="bookmark-description-entry" class="js-bookmark-desc-entry" rows="3" cols="50"></textarea>
           </label>
         </div>
