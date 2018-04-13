@@ -16,7 +16,7 @@ header{
 }
 
 main{
-  max-width: 500px;
+  max-width: 600px;
   margin: 30px auto;
 }
 
@@ -75,4 +75,23 @@ ul{
   border: 1px solid gray;
   border-top: none;
   border-radius: 0 0 10px 10px;
+}
+
+.js-bookmark-title-entry{
+  width: 60%;
+  margin-top: 10px;
+}
+
+.js-bookmark-url-entry{
+  width: 75%;
+  margin: 10px 0;
+}
+
+.js-bookmark-rating-entry{
+  max-width: 50px;
+}
+
+.js-delete-button{
+  margin-left: 10px;
+  float: right;
 }

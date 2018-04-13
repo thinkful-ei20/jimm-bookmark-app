@@ -11,7 +11,7 @@ const api = (function(){
 
   function createItem(name, description, url, rating, callback){
     let newItem =JSON.stringify({
-      name : name,
+      title : name,
       desc: description,
       url: url,
       rating: rating,
@@ -22,8 +22,8 @@ const api = (function(){
       data : newItem,
       contentType : 'application/json',
       success : callback,
-      error : (response) => {
-        store.setError(response);
+      error : (e) => {
+        store.setError(e);
       },
     });    
   }

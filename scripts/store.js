@@ -12,10 +12,20 @@ const store = (function(){
 
   let error = null;
 
+  let mainControlsExpanded = false;
+
   let minRating = 0;
 
   function setError(e){
     this.error = e;
+  }
+
+  const setMinRating = function(rating){
+    this.minRating = rating;
+  };
+  
+  function toggleMainControlsExpanded(){
+    this.mainControlsExpanded = !this.mainControlsExpanded;
   }
 
   const isIdExpaneded = function(id){
@@ -50,11 +60,6 @@ const store = (function(){
     Object.assign(found,newData);
   };
 
-  const setFilterMinimumRating = function(rating){
-    this.minRating = rating;
-  };
-
-
 
   return{
     items,
@@ -65,8 +70,11 @@ const store = (function(){
     findAndUpdate,
     error,
     setError,
-    setFilterMinimumRating,
+    setMinRating,
     isIdExpaneded,
     removeFromExpanded,
+    minRating,
+    toggleMainControlsExpanded,
+    mainControlsExpanded,
   };
 }());
