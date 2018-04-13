@@ -8,7 +8,7 @@ const store = (function(){
     //{title: 'bookmark 2', id: 2, rating: 3, url: 'http://example.com', desc: 'Dolar Sit',}
   ];
 
-  let expandedIds = ['cjfwxxod8002m0kz5kv4p1k4d'];
+  let expandedIds = [];
 
   let error = null;
 
