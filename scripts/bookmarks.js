@@ -30,7 +30,7 @@ const bookmarks = (function(){
     if(store.mainControlsExpanded){
       controls += `
       <form name="add-new-bookmark-controls">
-        <button class="js-cancel-add">Cancel</button>
+        <button class="js-cancel-add">Close</button>
         <button class="js-submit-add" type="submit">Submit</button>
         <div>
           <label for="bookmark-title-entry">Title
@@ -69,65 +69,10 @@ const bookmarks = (function(){
   }
   
   
-  function render(){
-    let controls = '';
-    if(store.mainControlsExpanded){
-      controls += `
-      <form name="add-new-bookmark-controls">
-        <button class="js-cancel-add">Cancel</button>
-        <button class="js-submit-add" type="submit">Submit</button>
-        <div>
-          <label for="bookmark-title-entry">Title
-          <input type="text" name="bookmark-title-entry" class="js-bookmark-title-entry" placeholder="e.g. Netflix" required>
-          </label>
-          <label for="bookmark-rating-entry">Rating
-          <input type="number" min="1" max="5" value="1" name="bookmark-rating-entry" class="js-bookmark-rating-entry">
-          </label>
-        </div>
-        <div>
-          <label for="bookmark-url-entry">url :
-          <input type="url" name="bookmark-url-entry" class="js-bookmark-url-entry" placeholder="http://www.example.com" required>
-          </label>
-        </div>
-        <div>
-          <label for="bookmark-description-entry">Description
-          <textarea name="bookmark-description-entry" class="js-bookmark-desc-entry" rows="3" cols="50"></textarea>
-          </label>
-        </div>
-      </form>`;
-    } else {
-      controls += `
-      <button class="js-expand-add">Add Bookmark</button>
-      <label for="min-rating-selector">Min. Rating
-      <select name="min-rating-selector" class="js-min-rating-selector">
-        <option value=0>Show All</option>
-        <option value=5>5</option>
-        <option value=4>4</option>
-        <option value=3>3</option>
-        <option value=2>2</option>
-      </select>
-      </label>`;
-    }
-
-    let errorHtml = '';
-    if(store.error !== null){
-      errorHtml += `
-        <p>A new bookmark must contain a title and a url.</p>
-      `;
-      store.setError(null);
-    }
-    
-    let listItems = '';
-    for(let i = 0; i < store.items.length; i++){
-      if(store.items[i].rating >= store.minRating){
-        listItems += `<li class="js-bookmark-element" data-id="${store.items[i].id}">${generateHtmlLi(store.items[i])}</li>`;
-      }
-    }
-    $('.js-main-controls').html(controls);
-    $('.js-min-rating-selector').val(store.minRating);
-    $('.js-error-display').html(errorHtml);
-    $('.js-bookmarks-list').html(listItems);
-
+  function renderAll(){
+    renderControls();
+    renderError();
+    renderList();
   }
 
   /*Creates a <li>
@@ -178,7 +123,7 @@ const bookmarks = (function(){
         store.expandedIds.push(id);
       }
       store.setError(null);
-      render();
+      renderList();
     });
   }
 
@@ -186,14 +131,16 @@ const bookmarks = (function(){
     $('.js-main-controls').on('click', '.js-expand-add' ,function(){
       console.log('button to expand clicked');
       store.setMainControlsExpanded(true);
-      render();
+      renderControls();
     });
   }
 
   function handleCancelAddBookmark(){
     $('.js-main-controls').on('click', '.js-cancel-add', function(){
       store.setMainControlsExpanded(false);
-      render();
+      store.setError(null);
+      renderControls();
+      renderError();
     });
   }
 
@@ -207,7 +154,7 @@ const bookmarks = (function(){
       api.createItem(createdName, createdDesc, createdURL, createdRating, (newItem) => {
         store.addItem(newItem);
         store.setError(null);
-        render();
+        renderAll();
       });
     });
   }
@@ -215,19 +162,17 @@ const bookmarks = (function(){
   function handleBookmarkDelete(){
     $(document).on('click', '.js-delete-button', function(event){
       const id = getIdFromElement(event.currentTarget);
-      console.log(id);
       api.deleteItem(id, store.findAndDelete(id));
       store.setError(null);
-      render();
+      renderList();
     });
   }
 
   function handleMinValueChange(){
     $(document).on('change', '.js-min-rating-selector', function(event){
       const newMinRating = $(event.currentTarget).val();
-      console.log(`min value changed to ${newMinRating}`);
       store.setMinRating(newMinRating);
-      render();
+      renderList();
     });
   }
 
@@ -242,7 +187,10 @@ const bookmarks = (function(){
   }
 
   return{
-    render,
+    renderAll,
+    renderControls,
+    renderError,
+    renderList,
     bindEventListeners,
   };
 }());

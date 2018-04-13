@@ -24,7 +24,7 @@ const api = (function(){
       success : callback,
       error : (e) => {
         store.setError(e);
-        bookmarks.render();
+        bookmarks.renderError();
       },
     });    
   }
@@ -38,7 +38,7 @@ const api = (function(){
       success : callback,
       error : (response) => {
         store.setError(response);
-        bookmarks.render();
+        bookmarks.renderError();
       },
     });
   }
@@ -50,7 +50,7 @@ const api = (function(){
       success : callback,
       error : (response) => {
         store.setError(response);
-        bookmarks.render();
+        bookmarks.renderError();
       },
     });
   }
