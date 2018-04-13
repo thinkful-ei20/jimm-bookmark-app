@@ -1,5 +1,5 @@
 'use strict';
-/* global store*/
+/* global store bookmarks*/
 
 // eslint-disable-next-line no-unused-vars
 const api = (function(){
@@ -24,6 +24,7 @@ const api = (function(){
       success : callback,
       error : (e) => {
         store.setError(e);
+        bookmarks.render();
       },
     });    
   }
@@ -37,6 +38,7 @@ const api = (function(){
       success : callback,
       error : (response) => {
         store.setError(response);
+        bookmarks.render();
       },
     });
   }
@@ -48,6 +50,7 @@ const api = (function(){
       success : callback,
       error : (response) => {
         store.setError(response);
+        bookmarks.render();
       },
     });
   }

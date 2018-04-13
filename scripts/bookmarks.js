@@ -38,6 +38,14 @@ const bookmarks = (function(){
         <option value=2>2</option>
       </select>`;
     }
+
+    let errorHtml = '';
+    if(store.error !== null){
+      errorHtml += `
+        <p>A new bookmark must contain a title and a url.</p>
+      `;
+      store.setError(null);
+    }
     
     let listItems = '';
     for(let i = 0; i < store.items.length; i++){
@@ -47,6 +55,7 @@ const bookmarks = (function(){
     }
     $('.js-main-controls').html(controls);
     $('.js-min-rating-selector').val(store.minRating);
+    $('.js-error-display').html(errorHtml);
     $('.js-bookmarks-list').html(listItems);
 
   }
