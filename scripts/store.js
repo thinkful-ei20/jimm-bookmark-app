@@ -23,9 +23,9 @@ const store = (function(){
   const setMinRating = function(rating){
     this.minRating = rating;
   };
-  
-  function toggleMainControlsExpanded(){
-    this.mainControlsExpanded = !this.mainControlsExpanded;
+
+  function setMainControlsExpanded(val){
+    this.mainControlsExpanded = val;
   }
 
   const isIdExpaneded = function(id){
@@ -74,7 +74,7 @@ const store = (function(){
     isIdExpaneded,
     removeFromExpanded,
     minRating,
-    toggleMainControlsExpanded,
+    setMainControlsExpanded,
     mainControlsExpanded,
   };
 }());
