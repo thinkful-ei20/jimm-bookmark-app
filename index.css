@@ -38,6 +38,10 @@ li{
   margin: 10px 0;
 }
 
+li button{
+  border-radius: 5px;
+}
+
 ul{
   max-width: 915px;
   margin: 25px auto;
@@ -47,8 +51,21 @@ ul{
   grid-column-gap: 15px;
 }
 
+button{
+  background-color: rgb(208,224,184);
+  border: 0;
+  /*background: none;*/
+  box-shadow: none;
+  border-radius: 0px;
+}
+
 .main-controls{
   margin: auto;
+}
+
+.main-controls button{
+  background-color: rgb(136,176,75);
+  border-radius: 5px;
 }
 
 .js-expand-add{
